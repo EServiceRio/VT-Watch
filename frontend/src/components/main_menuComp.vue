@@ -12,7 +12,16 @@
           <b-navbar-nav>
             <b-nav-item><router-link to="/">Home</router-link></b-nav-item>
             <b-nav-item><router-link to="/fabrica/">Fábrica</router-link></b-nav-item>
-            <b-nav-item><router-link to="/user/profile">Usuario</router-link></b-nav-item>
+            <b-nav-item-dropdown>
+              <template #button-content>
+                <em>
+                  Historico
+                </em>
+              </template>
+              <div v-for="no in node" :key="no.id" >
+                 <b-button @click="goHistorico(no.id)" variant="primary">{{ no.name }}</b-button>
+              </div>
+            </b-nav-item-dropdown>
           </b-navbar-nav>
          
           <b-navbar-nav class="ml-auto mr-2">
@@ -46,21 +55,32 @@ import { mapGetters } from 'vuex'
 import { mapMutations } from 'vuex'
 export default {
     name:'main_menu',
-    created(){
+    created(){      
+      this.getNodes()
       this.load()
       setInterval(()=>{this.load()},5000)
+    },
+    data(){
+      return{
+        node:[]
+      }
     },
     methods:{
       ...mapMutations(['logout','dxmSetOn','dxmSetOff']),
       load(){
         this.getDados()
       },
+      goHistorico(id){
+        this.$router.push( {path: `/historico/${id}`,forceRefresh: true} )
+        document.location.reload()
+      },
       deslogar(){
-        this.logout()
         this.$apagaCookies()
+        this.logout()
         setTimeout(() => {
+          this.$apagaCookies()
           this.$router.push('/');
-        }, 2000);
+        }, 1000);
       },
       async getDados() {
         try {
@@ -79,6 +99,26 @@ export default {
              }else{
               this.dxmSetOff()
              }
+          } else {
+            console.error('Erro ao fazer login');
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      async getNodes() {
+        try {
+          const response = await fetch(`${this.getDominio}/api/node/`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Token ${this.getToken}`
+            },
+          });
+  
+          if (response.ok) {
+            const data = await response.json();
+            this.node = data
           } else {
             console.error('Erro ao fazer login');
           }

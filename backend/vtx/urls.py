@@ -3,8 +3,8 @@ from .views import OsList, OsDetail
 from .views import GatewayList, GatewayDetail, DxmStatus
 from .views import NodeList, NodeDetail
 from .views import NodeSetupList, NodeSetupDetail
-from .views import HistList, HistDetail
-from .views import EventoList, EventoDetail
+from .views import HistList, HistDetail, Filtra
+from .views import EventoList, EventoDetail, Eventos
 
 urlpatterns = [
     path('os/', OsList.as_view()),
@@ -19,5 +19,7 @@ urlpatterns = [
     path('hist/', HistList.as_view()),
     path('hist/<int:pk>/',HistDetail.as_view()),
     path('evento/', EventoList.as_view()),
-    path('evento/<int:pk>/',EventoDetail.as_view()),
+    path('evento/<int:pk>/',EventoDetail.as_view()),    
+    path('filtra/',Filtra.as_view(),name="filtra"),
+    path('eventos/',Eventos.as_view(),name="eventos"),
 ]

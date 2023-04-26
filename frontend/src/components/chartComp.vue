@@ -7,7 +7,7 @@
 <script>
 import Chart from 'chart.js/auto'
 export default {
-    name: "chart",
+    name: "chartComp",
     created(){
         setTimeout(()=>{
             this.load()

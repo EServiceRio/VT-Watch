@@ -1,5 +1,6 @@
 import Home from '@/views/HomeView.vue'
 import Fabrica from '@/views/IndexView.vue'
+import Historico from '@/views/HistoricoView.vue'
 import Page1 from '@/views/Page1View.vue'
 import Page2 from '@/views/Page2View.vue'
 import Login from '@/views/LoginView.vue'
@@ -38,6 +39,12 @@ const routes = [
   {
     path: '/fabrica',
     component: Fabrica,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/historico/:node',
+    name: 'historico',
+    component: Historico,
     meta: { requiresAuth: true }
   },
   {
