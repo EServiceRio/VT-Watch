@@ -1,4 +1,5 @@
 import Home from '@/views/HomeView.vue'
+import Fabrica from '@/views/IndexView.vue'
 import Page1 from '@/views/Page1View.vue'
 import Page2 from '@/views/Page2View.vue'
 import Login from '@/views/LoginView.vue'
@@ -35,6 +36,11 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
+    path: '/fabrica',
+    component: Fabrica,
+    meta: { requiresAuth: true }
+  },
+  {
     path: '/page2',
     component: Page2,
     meta: { requiresAuth: true }
@@ -55,9 +61,9 @@ router.beforeEach((to, from, next) => {
     const token = getCookie('token')
     if(token == null){ throw new Error('token inexistente');}
     store.commit('logar',token)
+    store.commit('setUser',getCookie('nome'))
   }catch(erro){
     store.commit('logout')
-    console.log(erro)
   }
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!store.getters.logado) {

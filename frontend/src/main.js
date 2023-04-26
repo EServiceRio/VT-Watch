@@ -7,9 +7,10 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+Vue.config.productionTip = false
+
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
-Vue.config.productionTip = false
 
 Vue.prototype.$getCookie = function(name) {
   let cookieValue = null;
@@ -46,11 +47,22 @@ Vue.prototype.$apagaCookies = function() {
     document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
   }
 },
-
+Vue.prototype.$getImgUrl = function(pet,ext) {
+  var images = ''
+  if (ext =='png'){
+      images = require.context('./assets/', false, /\.png$/)
+      return images('./' + pet + ".png")
+    }else if(ext=='jpg'){
+       images = require.context('./assets/', false, /\.jpg$/)
+        return images('./' + pet + ".jpg")
+    }else{
+      images = require.context('./assets/', false, /\.bmp$/)
+        return images('./' + pet + ".bmp")
+    }
+},
 
 new Vue({
   router,
   store,
-  delimiters: ['{$', '$}'],
   render: h => h(App)
 }).$mount('#app')

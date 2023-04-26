@@ -12,6 +12,7 @@
   
   <script>
   import { mapMutations } from 'vuex';
+  import { mapGetters } from 'vuex';
   export default {
     data() {
       return {
@@ -19,11 +20,12 @@
         password: ''
       };
     },
+    computed:{...mapGetters(['getDominio','getToken'])},
     methods: {
-      ...mapMutations(['logar']),
+      ...mapMutations(['logar','setUser']),
       async login() {
         try {
-          const response = await fetch('http://localhost:8000/token/', {
+          const response = await fetch(`${this.getDominio}/token/`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -38,7 +40,7 @@
             const data = await response.json();
             this.logar(data.token);
             this.$setCookie('token',data.token);
-            this.$router.push('/');
+            this.userData()
           } else {
             console.error('Erro ao fazer login');
           }
@@ -46,6 +48,25 @@
           console.error(error);
         }
       },
+      async userData(){
+        try{
+        this.esperando = true
+        const response = await fetch(`${this.getDominio}/token-user/`,{
+          headers:{
+            'Authorization': `Token ${this.getToken}`
+          }
+        });
+        if(!response.ok){
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json()
+        this.$setCookie('nome',data.username);
+        this.setUser(data.username)
+        this.$router.push('/');
+      }catch(error){
+        alert(error)
+      }
+      }
     }
   };
   </script>

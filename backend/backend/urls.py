@@ -17,13 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
-from .views import indexView
+from .views import indexView, user_data
 from vtx.views import OsList, OsSerializer
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),    
-    path('token/', obtain_auth_token, name='api_token_auth'),    
+    path('token/', obtain_auth_token, name='api_token_auth'),
+    path('token-user/', user_data, name='token_user_data'),        
     path('',indexView.as_view(),name="index"),
-    path('api/os/',include('vtx.urls'))
+    path('api/',include('vtx.urls'))
 ]
