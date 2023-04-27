@@ -3,22 +3,17 @@
     <div>
       <h3>Pagina 1</h3>
       <p>essa pagina precisa de login</p>
-      <b-table 
-        striped 
-        hover 
-        :items="data"
-        :busy="esperando"
-      >
-      <template #cell(actions)="row">
-        <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
-          Editar
-        </b-button>
-        <b-button size="sm" @click="alert(row.index)">
-          Apagar
-        </b-button>
-      </template>
-
-      </b-table>
+      <button type="button" @click="getDados"> atuar</button>
+      <!--<button type="button" @click="setRelogio"> chamar Set</button>-->
+      <div>
+      <input type="number" v-model="registro">
+      <input type="number" v-model="quantidade">
+      <input type="number" v-model="modbusid">
+      <button type="button" @click="getRegistro"> enviar</button>
+      <div>
+        <button type="button" @click="setRegistro"> set 5 registros</button>
+      </div>
+    </div>
     </div>
 </template>
 
@@ -30,11 +25,14 @@ export default {
     return {
       esperando: false,
       falha: false,
-      data:[]
+      data:[],
+      registro: 1,
+      quantidade: 1,
+      modbusid: 199,
     }
   },
   created(){
-    this.getDados();
+    //this.getDados();
   },
   computed:{
     ...mapGetters(['getDominio','getToken'])
@@ -44,7 +42,7 @@ export default {
     async getDados(){
       try{
         this.esperando = true
-        const response = await fetch(`${this.getDominio}/api/gateway/`,{
+        const response = await fetch(`${this.getDominio}/api/dxm/reboot/`,{
           headers:{
             'Authorization': `Token ${this.getToken}`
           }
@@ -54,16 +52,101 @@ export default {
         }
         const data = await response.json()
         this.esperando = false
-        this.data = data
+        alert(data.valor)
+        alert(data.erro)
         this.falha = false
       }catch(error){
         this.falha = true
         this.esperando = false
-        this.logout()
         alert(error)
-        this.$router.push('/login/')
       }
-    }
+    },
+    async setRelogio(){
+      try{
+        this.esperando = true
+        const response = await fetch(`${this.getDominio}/api/dxm/setrelogio/`,{
+          method:"POST",
+          headers:{
+            'Authorization': `Token ${this.getToken}`
+          }
+        });
+        if(!response.ok){
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json()
+        this.esperando = false
+        alert(data.valor)
+        alert(data.erro)
+        this.falha = false
+      }catch(error){
+        this.falha = true
+        this.esperando = false
+        alert(error)
+      }
+    },
+    dataFormatGetRegs(){
+                const formData = new FormData()
+                formData.append('registro',`${this.registro}`)
+                formData.append('quantidade',`${this.quantidade}`)
+                formData.append('modbusid',`${this.modbusid}`)
+                return formData
+    },
+    dataFormatSetRegs(){
+                const formData = new FormData()
+                formData.append('registro',`${this.registro}`)
+                formData.append('quantidade',`5`)
+                formData.append('modbusid',`${this.modbusid}`)
+                formData.append('ar',"12,1,4,2,1")
+                return formData
+    },
+    async getRegistro(){
+      try{
+        this.esperando = true
+        const response = await fetch(`${this.getDominio}/api/dxm/getregs/`,{
+          method:"POST",
+          headers:{
+            'Authorization': `Token ${this.getToken}`
+          },
+          body: this.dataFormatGetRegs()
+        });
+        if(!response.ok){
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json()
+        this.esperando = false
+        alert(data.valor)
+        alert(data.erro)
+        this.falha = false
+      }catch(error){
+        this.falha = true
+        this.esperando = false
+        alert(error)
+      }
+    },
+    async setRegistro(){
+      try{
+        this.esperando = true
+        const response = await fetch(`${this.getDominio}/api/dxm/setregs/`,{
+          method:"POST",
+          headers:{
+            'Authorization': `Token ${this.getToken}`
+          },
+          body: this.dataFormatSetRegs()
+        });
+        if(!response.ok){
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json()
+        this.esperando = false
+        alert(data.valor)
+        alert(data.erro)
+        this.falha = false
+      }catch(error){
+        this.falha = true
+        this.esperando = false
+        alert(error)
+      }
+    },
   }
 }
 </script>

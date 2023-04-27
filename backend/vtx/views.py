@@ -1,5 +1,4 @@
 from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.authentication import TokenAuthentication
@@ -15,6 +14,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from .models import OS
 from .models import Gateway, Node, NodeSetup, Hist, Evento
+
+from .cicloLeitura import *
 
 class OsList(generics.ListCreateAPIView):
     permission_classes=[IsAuthenticated]

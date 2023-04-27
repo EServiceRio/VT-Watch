@@ -11,6 +11,7 @@
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
             <b-nav-item><router-link to="/">Home</router-link></b-nav-item>
+            <b-nav-item><router-link to="/page1/">teste</router-link></b-nav-item>
             <b-nav-item><router-link to="/fabrica/">Fábrica</router-link></b-nav-item>
             <b-nav-item-dropdown>
               <template #button-content>
