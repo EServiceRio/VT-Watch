@@ -1,0 +1,83 @@
+'versão 1.0 scripts monitoramento de motores
+'{"id":1,"name":"bomba","vibraX":"10.000","vibraZ":"100.000","vibraX2":"100.000","vibraZ2":"100.000","corrente":"0.00","temp":"100.0","estado":"falha","online":false,"alerta":"111000"}
+
+al=0
+a2=0
+a3=0
+a4=0
+a5=0
+a6=0	
+
+quantidade = 1
+
+vibraX[0]=0
+vibraX2[0]=0
+vibraZ[0]=0
+vibraZ2[0]=0
+corrente[0]=0
+temp[0]=0
+estado[0]="ok"
+alerta[0]=0
+id[0]=1
+nodeId[0]=1
+endereco[0]=199
+ciclo[0]=60
+addrVibraX[0]=1
+addrVibraX2[0]=2
+addrVibraZ[0]=3
+addrVibraZ2[0]=4
+addrTemp[0]=5
+addrCorrente[0]=6
+alertVibraX[0]=5000
+alertVibraXNv2[0]=15000
+alertVibraZ[0]=5000
+alertVibraZNv2[0]=15000
+alertVibraX2[0]=5000
+alertVibraX2Nv2[0]=15000
+alertVibraZ2[0]=5000
+alertVibraZ2Nv2[0]=15000
+alertTemp[0]=1000
+alertTempNv2[0]=1300
+alertCorrente[0] = 15
+alertCorrenteNv2[0] = 20
+
+
+
+FUNCTION inputs
+	FOR x = 0 to quantidade-1
+		PRINT "adress X: ",addrVibraX[x]," address: ",endereco[x],"\r\n"
+		vibraX[x]= GETREG(addrVibraX[x],endereco[x],4)
+		vibraX2[x]= GETREG(addrVibraX2[x],endereco[x],4)
+		vibraZ[x]= GETREG(addrVibraZ[x],endereco[x],4)
+		vibraZ2[x]= GETREG(addrVibraZ2[x],endereco[x],4)
+		corrente[x]= GETREG(addrCorrente[x],endereco[x],4)
+		temp[x]= GETREG(addrTemp[x],endereco[x],4)
+	NEXT x
+END FUNCTION
+
+FUNCTION alertas
+	FOR x = 0 to quantidade-1
+		alerta[x]=0	
+		PRINT x,"valor de vibra: ",vibraX[x]," ,nv2: ",alertVibraXNv2[x]," ,nv1: ",alertVibraX[x],"\r\n"
+		IF vibraX[x] >  alertVibraXNv2[x] THEN 
+			alerta[x]= 2 * 100000 + alerta[x]
+		Else
+			IF vibraX[x] >  alertVibraX[x] THEN 
+				alerta[x]= 1 * 100000 + alerta[x]
+			END IF
+		END IF
+		PRINT "Alerta: ",alerta[x],"\r\n"
+		WrErr = SETREG(11, alerta[x], 199, 4)
+	NEXT x
+END FUNCTION
+
+
+while(1)	
+	TimeStamp = NOW
+	
+	inputs()
+	alertas()
+	
+	while (NOW-TimeStamp < 2)	
+	WEND
+Wend

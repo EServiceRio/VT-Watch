@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Objects - Registered to 'Sensonix ' - https://www.liquid-technologies.com/xml-objects -->
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <file_info>
+    <info filename="DXMConfig.xml" guid="385cfc7b-c59b-4c2e-9760-53f3e738954d" software="DXMConfigurationSoftware v4" timestamp="28/04/2023 11:09:46" version="4.15.0.0" os="Win32NT" osversion="Microsoft Windows NT 6.1.7601 Service Pack 1" device="DXM700" solution="Vibe_v2" />
+    <notes>XML VibeSGDXM700
+This XML requires the Vibration Monitoring Solution Kit Script file VibeSGDXM700.sb and is only to be used on the DXM700 or newer devices.
+
+Copyright 2019 Banner Engineering Corp
+All rights reserved.</notes>
+  </file_info>
+  <local_regs />
+  <cascade />
+  <constant />
+  <calculate />
+  <thresholds />
+  <trend>
+    <rule name="N1_Trend_ZV" track="1" period="00:05:00" slice="100" reset="0" filter="4" filval="5021" switch="241" />
+    <rule name="N1_Trend_ZA" track="2" period="00:05:00" slice="100" reset="0" filter="4" filval="5022" switch="241" />
+    <rule name="N1_Trend_XV" track="3" period="00:05:00" slice="100" reset="0" filter="4" filval="5023" switch="241" />
+    <rule name="N1_Trend_XA" track="4" period="00:05:00" slice="100" reset="0" filter="4" filval="5024" switch="241" />
+    <rule name="N2_Trend_ZV" track="6" period="00:05:00" slice="100" reset="0" filter="4" filval="5025" switch="242" />
+    <rule name="N2_Trend_ZA" track="7" period="00:05:00" slice="100" reset="0" filter="4" filval="5026" switch="242" />
+    <rule name="N2_Trend_XV" track="8" period="00:05:00" slice="100" reset="0" filter="4" filval="5027" switch="242" />
+    <rule name="N2_Trend_XA" track="9" period="00:05:00" slice="100" reset="0" filter="4" filval="5028" switch="242" />
+    <rule name="N3_Trend_ZV" track="11" period="00:05:00" slice="100" reset="0" filter="4" filval="5029" switch="243" />
+    <rule name="N3_Trend_ZA" track="12" period="00:05:00" slice="100" reset="0" filter="4" filval="5030" switch="243" />
+    <rule name="N3_Trend_XV" track="13" period="00:05:00" slice="100" reset="0" filter="4" filval="5031" switch="243" />
+    <rule name="N3_Trend_XA" track="14" period="00:05:00" slice="100" reset="0" filter="4" filval="5032" switch="243" />
+    <rule name="N4_Trend_ZV" track="16" period="00:05:00" slice="100" reset="0" filter="4" filval="5033" switch="244" />
+    <rule name="N4_Trend_ZA" track="17" period="00:05:00" slice="100" reset="0" filter="4" filval="5034" switch="244" />
+    <rule name="N4_Trend_XV" track="18" period="00:05:00" slice="100" reset="0" filter="4" filval="5035" switch="244" />
+    <rule name="N4_Trend_XA" track="19" period="00:05:00" slice="100" reset="0" filter="4" filval="5036" switch="244" />
+    <rule name="N5_Trend_ZV" track="21" period="00:05:00" slice="100" reset="0" filter="4" filval="5037" switch="245" />
+    <rule name="N5_Trend_ZA" track="22" period="00:05:00" slice="100" reset="0" filter="4" filval="5038" switch="245" />
+    <rule name="N5_Trend_XV" track="23" period="00:05:00" slice="100" reset="0" filter="4" filval="5039" switch="245" />
+    <rule name="N5_Trend_XA" track="24" period="00:05:00" slice="100" reset="0" filter="4" filval="5040" switch="245" />
+    <rule name="N6_Trend_ZV" track="26" period="00:05:00" slice="100" reset="0" filter="4" filval="5041" switch="246" />
+    <rule name="N6_Trend_ZA" track="27" period="00:05:00" slice="100" reset="0" filter="4" filval="5042" switch="246" />
+    <rule name="N6_Trend_XV" track="28" period="00:05:00" slice="100" reset="0" filter="4" filval="5043" switch="246" />
+    <rule name="N6_Trend_XA" track="29" period="00:05:00" slice="100" reset="0" filter="4" filval="5044" switch="246" />
+    <rule name="N7_Trend_ZV" track="31" period="00:05:00" slice="100" reset="0" filter="4" filval="5045" switch="247" />
+    <rule name="N7_Trend_ZA" track="32" period="00:05:00" slice="100" reset="0" filter="4" filval="5046" switch="247" />
+    <rule name="N7_Trend_XV" track="33" period="00:05:00" slice="100" reset="0" filter="4" filval="5047" switch="247" />
+    <rule name="N7_Trend_XA" track="34" period="00:05:00" slice="100" reset="0" filter="4" filval="5048" switch="247" />
+    <rule name="N8_Trend_ZV" track="36" period="00:05:00" slice="100" reset="0" filter="4" filval="5049" switch="248" />
+    <rule name="N8_Trend_ZA" track="37" period="00:05:00" slice="100" reset="0" filter="4" filval="5050" switch="248" />
+    <rule name="N8_Trend_XV" track="38" period="00:05:00" slice="100" reset="0" filter="4" filval="5051" switch="248" />
+    <rule name="N8_Trend_XA" track="39" period="00:05:00" slice="100" reset="0" filter="4" filval="5052" switch="248" />
+    <rule name="N9_Trend_ZV" track="41" period="00:05:00" slice="100" reset="0" filter="4" filval="5053" switch="249" />
+    <rule name="N9_Trend_ZA" track="42" period="00:05:00" slice="100" reset="0" filter="4" filval="5054" switch="249" />
+    <rule name="N9_Trend_XV" track="43" period="00:05:00" slice="100" reset="0" filter="4" filval="5055" switch="249" />
+    <rule name="N9_Trend_XA" track="44" period="00:05:00" slice="100" reset="0" filter="4" filval="5056" switch="249" />
+    <rule name="N10_Trend_ZV" track="46" period="00:05:00" slice="100" reset="0" filter="4" filval="5057" switch="250" />
+    <rule name="N10_Trend_ZA" track="47" period="00:05:00" slice="100" reset="0" filter="4" filval="5058" switch="250" />
+    <rule name="N10_Trend_XV" track="48" period="00:05:00" slice="100" reset="0" filter="4" filval="5059" switch="250" />
+    <rule name="N10_Trend_XA" track="49" period="00:05:00" slice="100" reset="0" filter="4" filval="5060" switch="250" />
+    <rule name="N11_Trend_ZV" track="51" period="00:05:00" slice="100" reset="0" filter="4" filval="5061" switch="251" />
+    <rule name="N11_Trend_ZA" track="52" period="00:05:00" slice="100" reset="0" filter="4" filval="5062" switch="251" />
+    <rule name="N11_Trend_XV" track="53" period="00:05:00" slice="100" reset="0" filter="4" filval="5063" switch="251" />
+    <rule name="N11_Trend_XA" track="54" period="00:05:00" slice="100" reset="0" filter="4" filval="5064" switch="251" />
+    <rule name="N12_Trend_ZV" track="56" period="00:05:00" slice="100" reset="0" filter="4" filval="5065" switch="252" />
+    <rule name="N12_Trend_ZA" track="57" period="00:05:00" slice="100" reset="0" filter="4" filval="5066" switch="252" />
+    <rule name="N12_Trend_XV" track="58" period="00:05:00" slice="100" reset="0" filter="4" filval="5067" switch="252" />
+    <rule name="N12_Trend_XA" track="59" period="00:05:00" slice="100" reset="0" filter="4" filval="5068" switch="252" />
+    <rule name="N13_Trend_ZV" track="61" period="00:05:00" slice="100" reset="0" filter="4" filval="5069" switch="253" />
+    <rule name="N13_Trend_ZA" track="62" period="00:05:00" slice="100" reset="0" filter="4" filval="5070" switch="253" />
+    <rule name="N13_Trend_XV" track="63" period="00:05:00" slice="100" reset="0" filter="4" filval="5071" switch="253" />
+    <rule name="N13_Trend_XA" track="64" period="00:05:00" slice="100" reset="0" filter="4" filval="5072" switch="253" />
+    <rule name="N14_Trend_ZV" track="66" period="00:05:00" slice="100" reset="0" filter="4" filval="5073" switch="254" />
+    <rule name="N14_Trend_ZA" track="67" period="00:05:00" slice="100" reset="0" filter="4" filval="5074" switch="254" />
+    <rule name="N14_Trend_XV" track="68" period="00:05:00" slice="100" reset="0" filter="4" filval="5075" switch="254" />
+    <rule name="N14_Trend_XA" track="69" period="00:05:00" slice="100" reset="0" filter="4" filval="5076" switch="254" />
+    <rule name="N15_Trend_ZV" track="71" period="00:05:00" slice="100" reset="0" filter="4" filval="5077" switch="255" />
+    <rule name="N15_Trend_ZA" track="72" period="00:05:00" slice="100" reset="0" filter="4" filval="5078" switch="255" />
+    <rule name="N15_Trend_XV" track="73" period="00:05:00" slice="100" reset="0" filter="4" filval="5079" switch="255" />
+    <rule name="N15_Trend_XA" track="74" period="00:05:00" slice="100" reset="0" filter="4" filval="5080" switch="255" />
+    <rule name="N16_Trend_ZV" track="76" period="00:05:00" slice="100" reset="0" filter="4" filval="5081" switch="256" />
+    <rule name="N16_Trend_ZA" track="77" period="00:05:00" slice="100" reset="0" filter="4" filval="5082" switch="256" />
+    <rule name="N16_Trend_XV" track="78" period="00:05:00" slice="100" reset="0" filter="4" filval="5083" switch="256" />
+    <rule name="N16_Trend_XA" track="79" period="00:05:00" slice="100" reset="0" filter="4" filval="5084" switch="256" />
+    <rule name="N17_Trend_ZV" track="81" period="00:05:00" slice="100" reset="0" filter="4" filval="5085" switch="257" />
+    <rule name="N17_Trend_ZA" track="82" period="00:05:00" slice="100" reset="0" filter="4" filval="5086" switch="257" />
+    <rule name="N17_Trend_XV" track="83" period="00:05:00" slice="100" reset="0" filter="4" filval="5087" switch="257" />
+    <rule name="N17_Trend_XA" track="84" period="00:05:00" slice="100" reset="0" filter="4" filval="5088" switch="257" />
+    <rule name="N18_Trend_ZV" track="86" period="00:05:00" slice="100" reset="0" filter="4" filval="5089" switch="258" />
+    <rule name="N18_Trend_ZA" track="87" period="00:05:00" slice="100" reset="0" filter="4" filval="5090" switch="258" />
+    <rule name="N18_Trend_XV" track="88" period="00:05:00" slice="100" reset="0" filter="4" filval="5091" switch="258" />
+    <rule name="N18_Trend_XA" track="89" period="00:05:00" slice="100" reset="0" filter="4" filval="5092" switch="258" />
+    <rule name="N19_Trend_ZV" track="91" period="00:05:00" slice="100" reset="0" filter="4" filval="5093" switch="259" />
+    <rule name="N19_Trend_ZA" track="92" period="00:05:00" slice="100" reset="0" filter="4" filval="5094" switch="259" />
+    <rule name="N19_Trend_XV" track="93" period="00:05:00" slice="100" reset="0" filter="4" filval="5095" switch="259" />
+    <rule name="N19_Trend_XA" track="94" period="00:05:00" slice="100" reset="0" filter="4" filval="5096" switch="259" />
+    <rule name="N20_Trend_ZV" track="96" period="00:05:00" slice="100" reset="0" filter="4" filval="5097" switch="260" />
+    <rule name="N20_Trend_ZA" track="97" period="00:05:00" slice="100" reset="0" filter="4" filval="5098" switch="260" />
+    <rule name="N20_Trend_XV" track="98" period="00:05:00" slice="100" reset="0" filter="4" filval="5099" switch="260" />
+    <rule name="N20_Trend_XA" track="99" period="00:05:00" slice="100" reset="0" filter="4" filval="5100" switch="260" />
+    <rule name="N21_Trend_ZV" track="101" period="00:05:00" slice="100" reset="0" filter="4" filval="5101" switch="261" />
+    <rule name="N21_Trend_ZA" track="102" period="00:05:00" slice="100" reset="0" filter="4" filval="5102" switch="261" />
+    <rule name="N21_Trend_XV" track="103" period="00:05:00" slice="100" reset="0" filter="4" filval="5103" switch="261" />
+    <rule name="N21_Trend_XA" track="104" period="00:05:00" slice="100" reset="0" filter="4" filval="5104" switch="261" />
+    <rule name="N22_Trend_ZV" track="106" period="00:05:00" slice="100" reset="0" filter="4" filval="5105" switch="262" />
+    <rule name="N22_Trend_ZA" track="107" period="00:05:00" slice="100" reset="0" filter="4" filval="5106" switch="262" />
+    <rule name="N22_Trend_XV" track="108" period="00:05:00" slice="100" reset="0" filter="4" filval="5107" switch="262" />
+    <rule name="N22_Trend_XA" track="109" period="00:05:00" slice="100" reset="0" filter="4" filval="5108" switch="262" />
+    <rule name="N23_Trend_ZV" track="111" period="00:05:00" slice="100" reset="0" filter="4" filval="5109" switch="263" />
+    <rule name="N23_Trend_ZA" track="112" period="00:05:00" slice="100" reset="0" filter="4" filval="5110" switch="263" />
+    <rule name="N23_Trend_XV" track="113" period="00:05:00" slice="100" reset="0" filter="4" filval="5111" switch="263" />
+    <rule name="N23_Trend_XA" track="114" period="00:05:00" slice="100" reset="0" filter="4" filval="5112" switch="263" />
+    <rule name="N24_Trend_ZV" track="116" period="00:05:00" slice="100" reset="0" filter="4" filval="5113" switch="264" />
+    <rule name="N24_Trend_ZA" track="117" period="00:05:00" slice="100" reset="0" filter="4" filval="5114" switch="264" />
+    <rule name="N24_Trend_XV" track="118" period="00:05:00" slice="100" reset="0" filter="4" filval="5115" switch="264" />
+    <rule name="N24_Trend_XA" track="119" period="00:05:00" slice="100" reset="0" filter="4" filval="5116" switch="264" />
+    <rule name="N25_Trend_ZV" track="121" period="00:05:00" slice="100" reset="0" filter="4" filval="5117" switch="265" />
+    <rule name="N25_Trend_ZA" track="122" period="00:05:00" slice="100" reset="0" filter="4" filval="5118" switch="265" />
+    <rule name="N25_Trend_XV" track="123" period="00:05:00" slice="100" reset="0" filter="4" filval="5119" switch="265" />
+    <rule name="N25_Trend_XA" track="124" period="00:05:00" slice="100" reset="0" filter="4" filval="5120" switch="265" />
+    <rule name="N26_Trend_ZV" track="126" period="00:05:00" slice="100" reset="0" filter="4" filval="5121" switch="266" />
+    <rule name="N26_Trend_ZA" track="127" period="00:05:00" slice="100" reset="0" filter="4" filval="5122" switch="266" />
+    <rule name="N26_Trend_XV" track="128" period="00:05:00" slice="100" reset="0" filter="4" filval="5123" switch="266" />
+    <rule name="N26_Trend_XA" track="129" period="00:05:00" slice="100" reset="0" filter="4" filval="5124" switch="266" />
+    <rule name="N27_Trend_ZV" track="131" period="00:05:00" slice="100" reset="0" filter="4" filval="5125" switch="267" />
+    <rule name="N27_Trend_ZA" track="132" period="00:05:00" slice="100" reset="0" filter="4" filval="5126" switch="267" />
+    <rule name="N27_Trend_XV" track="133" period="00:05:00" slice="100" reset="0" filter="4" filval="5127" switch="267" />
+    <rule name="N27_Trend_XA" track="134" period="00:05:00" slice="100" reset="0" filter="4" filval="5128" switch="267" />
+    <rule name="N28_Trend_ZV" track="136" period="00:05:00" slice="100" reset="0" filter="4" filval="5129" switch="268" />
+    <rule name="N28_Trend_ZA" track="137" period="00:05:00" slice="100" reset="0" filter="4" filval="5130" switch="268" />
+    <rule name="N28_Trend_XV" track="138" period="00:05:00" slice="100" reset="0" filter="4" filval="5131" switch="268" />
+    <rule name="N28_Trend_XA" track="139" period="00:05:00" slice="100" reset="0" filter="4" filval="5132" switch="268" />
+    <rule name="N29_Trend_ZV" track="141" period="00:05:00" slice="100" reset="0" filter="4" filval="5133" switch="269" />
+    <rule name="N29_Trend_ZA" track="142" period="00:05:00" slice="100" reset="0" filter="4" filval="5134" switch="269" />
+    <rule name="N29_Trend_XV" track="143" period="00:05:00" slice="100" reset="0" filter="4" filval="5135" switch="269" />
+    <rule name="N29_Trend_XA" track="144" period="00:05:00" slice="100" reset="0" filter="4" filval="5136" switch="269" />
+    <rule name="N30_Trend_ZV" track="146" period="00:05:00" slice="100" reset="0" filter="4" filval="5137" switch="270" />
+    <rule name="N30_Trend_ZA" track="147" period="00:05:00" slice="100" reset="0" filter="4" filval="5138" switch="270" />
+    <rule name="N30_Trend_XV" track="148" period="00:05:00" slice="100" reset="0" filter="4" filval="5139" switch="270" />
+    <rule name="N30_Trend_XA" track="149" period="00:05:00" slice="100" reset="0" filter="4" filval="5140" switch="270" />
+    <rule name="N31_Trend_ZV" track="151" period="00:05:00" slice="100" reset="0" filter="4" filval="5141" switch="271" />
+    <rule name="N31_Trend_ZA" track="152" period="00:05:00" slice="100" reset="0" filter="4" filval="5142" switch="271" />
+    <rule name="N31_Trend_XV" track="153" period="00:05:00" slice="100" reset="0" filter="4" filval="5143" switch="271" />
+    <rule name="N31_Trend_XA" track="154" period="00:05:00" slice="100" reset="0" filter="4" filval="5144" switch="271" />
+    <rule name="N32_Trend_ZV" track="156" period="00:05:00" slice="100" reset="0" filter="4" filval="5145" switch="272" />
+    <rule name="N32_Trend_ZA" track="157" period="00:05:00" slice="100" reset="0" filter="4" filval="5146" switch="272" />
+    <rule name="N32_Trend_XV" track="158" period="00:05:00" slice="100" reset="0" filter="4" filval="5147" switch="272" />
+    <rule name="N32_Trend_XA" track="159" period="00:05:00" slice="100" reset="0" filter="4" filval="5148" switch="272" />
+    <rule name="N33_Trend_ZV" track="161" period="00:05:00" slice="100" reset="0" filter="4" filval="5149" switch="273" />
+    <rule name="N33_Trend_ZA" track="162" period="00:05:00" slice="100" reset="0" filter="4" filval="5150" switch="273" />
+    <rule name="N33_Trend_XV" track="163" period="00:05:00" slice="100" reset="0" filter="4" filval="5151" switch="273" />
+    <rule name="N33_Trend_XA" track="164" period="00:05:00" slice="100" reset="0" filter="4" filval="5152" switch="273" />
+    <rule name="N34_Trend_ZV" track="166" period="00:05:00" slice="100" reset="0" filter="4" filval="5153" switch="274" />
+    <rule name="N34_Trend_ZA" track="167" period="00:05:00" slice="100" reset="0" filter="4" filval="5154" switch="274" />
+    <rule name="N34_Trend_XV" track="168" period="00:05:00" slice="100" reset="0" filter="4" filval="5155" switch="274" />
+    <rule name="N34_Trend_XA" track="169" period="00:05:00" slice="100" reset="0" filter="4" filval="5156" switch="274" />
+    <rule name="N35_Trend_ZV" track="171" period="00:05:00" slice="100" reset="0" filter="4" filval="5157" switch="275" />
+    <rule name="N35_Trend_ZA" track="172" period="00:05:00" slice="100" reset="0" filter="4" filval="5158" switch="275" />
+    <rule name="N35_Trend_XV" track="173" period="00:05:00" slice="100" reset="0" filter="4" filval="5159" switch="275" />
+    <rule name="N35_Trend_XA" track="174" period="00:05:00" slice="100" reset="0" filter="4" filval="5160" switch="275" />
+    <rule name="N36_Trend_ZV" track="176" period="00:05:00" slice="100" reset="0" filter="4" filval="5161" switch="276" />
+    <rule name="N36_Trend_ZA" track="177" period="00:05:00" slice="100" reset="0" filter="4" filval="5162" switch="276" />
+    <rule name="N36_Trend_XV" track="178" period="00:05:00" slice="100" reset="0" filter="4" filval="5163" switch="276" />
+    <rule name="N36_Trend_XA" track="179" period="00:05:00" slice="100" reset="0" filter="4" filval="5164" switch="276" />
+    <rule name="N37_Trend_ZV" track="181" period="00:05:00" slice="100" reset="0" filter="4" filval="5165" switch="277" />
+    <rule name="N37_Trend_ZA" track="182" period="00:05:00" slice="100" reset="0" filter="4" filval="5166" switch="277" />
+    <rule name="N37_Trend_XV" track="183" period="00:05:00" slice="100" reset="0" filter="4" filval="5167" switch="277" />
+    <rule name="N37_Trend_XA" track="184" period="00:05:00" slice="100" reset="0" filter="4" filval="5168" switch="277" />
+    <rule name="N38_Trend_ZV" track="186" period="00:05:00" slice="100" reset="0" filter="4" filval="5169" switch="278" />
+    <rule name="N38_Trend_ZA" track="187" period="00:05:00" slice="100" reset="0" filter="4" filval="5170" switch="278" />
+    <rule name="N38_Trend_XV" track="188" period="00:05:00" slice="100" reset="0" filter="4" filval="5171" switch="278" />
+    <rule name="N38_Trend_XA" track="189" period="00:05:00" slice="100" reset="0" filter="4" filval="5172" switch="278" />
+    <rule name="N39_Trend_ZV" track="191" period="00:05:00" slice="100" reset="0" filter="4" filval="5173" switch="279" />
+    <rule name="N39_Trend_ZA" track="192" period="00:05:00" slice="100" reset="0" filter="4" filval="5174" switch="279" />
+    <rule name="N39_Trend_XV" track="193" period="00:05:00" slice="100" reset="0" filter="4" filval="5175" switch="279" />
+    <rule name="N39_Trend_XA" track="194" period="00:05:00" slice="100" reset="0" filter="4" filval="5176" switch="279" />
+    <rule name="N40_Trend_ZV" track="196" period="00:05:00" slice="100" reset="0" filter="4" filval="5177" switch="280" />
+    <rule name="N40_Trend_ZA" track="197" period="00:05:00" slice="100" reset="0" filter="4" filval="5178" switch="280" />
+    <rule name="N40_Trend_XV" track="198" period="00:05:00" slice="100" reset="0" filter="4" filval="5179" switch="280" />
+    <rule name="N40_Trend_XA" track="199" period="00:05:00" slice="100" reset="0" filter="4" filval="5180" switch="280" />
+  </trend>
+  <control>
+    <rule ctl1="0" ctl2="0" flags="0" mode="2" ctl3="572" ctl4="574" name="Vibe Alarm" reg2="0" reg="829" />
+    <rule ctl1="0" ctl2="0" flags="0" mode="2" ctl3="571" ctl4="573" name="Vibe Warning Light 2" reg2="0" reg="840" />
+    <rule ctl1="0" ctl2="0" flags="0" mode="4" ctl3="830" ctl4="0" name="All Clear Light 4" reg2="0" reg="827" />
+    <rule ctl1="0" ctl2="0" flags="0" mode="2" ctl3="825" ctl4="826" name="Any Error Light 3" reg2="0" reg="830" />
+    <rule ctl1="0" ctl2="0" flags="0" mode="2" ctl3="841" ctl4="828" name="AlarmStatusLight 1" reg2="0" reg="825" />
+    <rule ctl1="0" ctl2="0" flags="0" mode="2" ctl3="840" ctl4="575" name="VibeTemp Warn" reg2="0" reg="826" />
+    <rule ctl1="0" ctl2="0" flags="0" mode="2" ctl3="829" ctl4="576" name="VibeTemp Alarm" reg2="0" reg="841" />
+  </control>
+  <rtu_read />
+  <rtu_write>
+    <rule count="1" mask="0" name="Site Survey" offset="0" remfmt="int" remreg="15" remtype="hold_reg" scale="0" swapped="0" unit="1" localreg="821" delta="0" maxquiet="0" minquiet="0" fill="0" />
+    <rule count="1" mask="0" name="Binding" offset="0" remfmt="int" remreg="6371" remtype="hold_reg" scale="0" swapped="0" unit="1" localreg="824" delta="0" maxquiet="0" minquiet="0" fill="0" />
+    <rule count="1" mask="0" name="Alarm Light" offset="0" remfmt="int" remreg="2101" remtype="hold_reg" scale="0" swapped="0" unit="203" localreg="825" delta="0" maxquiet="0" minquiet="0" fill="0" />
+    <rule count="1" mask="0" name="Warning Light" offset="0" remfmt="int" remreg="2102" remtype="hold_reg" scale="0" swapped="0" unit="203" localreg="826" delta="0" maxquiet="0" minquiet="0" fill="0" />
+    <rule count="1" mask="0" name="Any Error Light" offset="0" remfmt="int" remreg="2103" remtype="hold_reg" scale="0" swapped="0" unit="203" localreg="830" delta="0" maxquiet="0" minquiet="0" fill="0" />
+    <rule count="1" mask="0" name="All Clear Light" offset="0" remfmt="int" remreg="2104" remtype="hold_reg" scale="0" swapped="0" unit="203" localreg="827" delta="0" maxquiet="0" minquiet="0" fill="0" />
+    <rule count="1" mask="0" name="Alarm LCD LED" offset="0" remfmt="int" remreg="1104" remtype="hold_reg" scale="0" swapped="0" unit="201" localreg="825" delta="0" maxquiet="0" minquiet="0" fill="0" />
+    <rule count="1" mask="0" name="Warning LCD LED" offset="0" remfmt="int" remreg="1103" remtype="hold_reg" scale="0" swapped="0" unit="201" localreg="826" delta="0" maxquiet="0" minquiet="0" fill="0" />
+    <rule count="1" mask="0" name="Any Error LCD LED" offset="0" remfmt="int" remreg="1104" remtype="hold_reg" scale="0" swapped="0" unit="201" localreg="830" delta="0" maxquiet="0" minquiet="0" fill="0" />
+    <rule count="1" mask="0" name="All Clear LCD LED" offset="0" remfmt="int" remreg="1107" remtype="hold_reg" scale="0" swapped="0" unit="201" localreg="827" delta="0" maxquiet="0" minquiet="0" fill="0" />
+  </rtu_write>
+  <sched_holidays />
+  <sched_commands />
+  <sched_events />
+  <astro_clock>
+    <set dst="0" lat="0" lon="0" zone="-3" />
+  </astro_clock>
+  <gps>
+    <unit addr="0" enabled="0" flags="0" lograte="00:00:00" poll="00:00:00" />
+  </gps>
+  <master_mode>
+    <mode opt="1" state="0" />
+  </master_mode>
+  <rtu_device>
+    <dev baud="19200" commtype="485" data="8" parity="0" stop="1" rate="50" thisUnit="0" timeout="5" />
+    <bus baud="19200" commtype="4" data="8" parity="0" stop="1" rate="50" thisUnit="255" timeout="5" />
+  </rtu_device>
+  <rtu_server>
+    <dev baud="115200" commtype="485" data="8" parity="0" stop="1" timeout="0" />
+  </rtu_server>
+  <scripts>
+    <script enabled="1" path="scriptVT.sb" baud="19200" data="8" parity="0" stop="1" flags="1" />
+  </scripts>
+  <timekeepers>
+    <timekeeper name="external" interval="0" enabled="1" address="0.0.0.0" priority="0" />
+    <timekeeper name="internal" interval="0" enabled="0" address="0.0.0.0" priority="0" />
+    <timekeeper name="network" interval="0" enabled="0" address="0.0.0.0" priority="0" />
+  </timekeepers>
+  <system_types />
+  <log_files>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="0" end="00:00:00" name="EventLog.txt" new="0" rate="00:00:00" reg="0" tod="1" full="0" size="102400" email="" subject="" />
+    </fileinfo>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="0" end="00:00:00" name="Vib1.txt" new="0" rate="00:05:00" reg="0" tod="1" full="0" size="102400" email="" subject="" flags="2" />
+    </fileinfo>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="0" end="00:00:00" name="LogFile2.txt" new="0" rate="00:00:00" reg="0" tod="0" full="0" size="102400" email="" subject="" />
+    </fileinfo>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="0" end="00:00:00" name="LogFile3.txt" new="0" rate="00:00:00" reg="0" tod="0" full="0" size="102400" email="" subject="" />
+    </fileinfo>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="1" end="00:00:00" name="HttpLog.txt" new="0" rate="00:00:00" reg="0" tod="1" full="1" size="0" email="" subject="" />
+    </fileinfo>
+  </log_files>
+  <device_sync>
+    <device sync_rollover="100000000" />
+  </device_sync>
+  <email_server>
+    <server auth="" domain="" pop3="" pop3domain="" pop3user="" port="25" smtp="" sysrep="0" user="" pwd="" useauth="0" pass="" />
+  </email_server>
+  <email_recipient>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+  </email_recipient>
+  <sms>
+    <sms_recipient>
+      <recipient name="SMS Recipient 1" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 2" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 3" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 4" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 5" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 6" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 7" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 8" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 9" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 10" phone="" />
+      <message />
+    </sms_recipient>
+  </sms>
+  <server_params>
+    <server apn="IP" apnpass="vzwinternet" cellenab="8" cellfw="0.0.0.0" cellfwmask="255.255.255.0" defaddr="192.168.10.1" defgtwy="0.0.0.0" defmask="255.255.255.0" dhcp="0" sms="1" />
+    <cell_info cell_modelname="SXI-CATM1VZW-001" />
+    <maint csqbak="0" cexch="0" csqret="5" csrvwd="0" linkdel="10000" linkret="5" csflags="0" csrvre="0" ckeep="0" linkmax="60000" />
+    <eth flags="0" />
+    <apn idx="1" type="IPV4V6" name="" />
+    <apn idx="2" type="IPV4V6" name="vzwadmin" />
+    <apn idx="3" type="IPV4V6" name="vzwinternet" />
+    <apn idx="4" type="IPV4V6" name="vzwapp" />
+    <apn idx="5" type="IPV4V6" name="vzw800" />
+    <apn idx="6" type="IPV4V6" name="vzwclass6" />
+    <cx en="1" />
+    <netif mode="1" flags="0" ip4="0.0.0.0" sn4="0.0.0.0" gw4="0.0.0.0" />
+  </server_params>
+  <http_push>
+    <dns address="0.0.0.0" />
+    <dns address="0.0.0.0" />
+    <push enabled="1" flags="0" id="00000000-0000-0000-0000-000000000000" interval="00:00:00" port="80" debug="0" vendor="0" host="push.bannercds.com" page="/push.aspx" />
+  </http_push>
+  <fwall>
+    <config debug="0" disable="0" />
+  </fwall>
+  <profinet>
+    <io en="0" flags="0" />
+  </profinet>
+  <iot>
+    <mqtt en="0" flags="0" port="8883" vendor="3" debug="0" host="aws.com" ping="50000" throttle="5000" id="" />
+  </iot>
+  <conversion>
+    <eip endian="0" />
+  </conversion>
+</configuration>

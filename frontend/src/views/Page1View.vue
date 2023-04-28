@@ -13,6 +13,9 @@
       <div>
         <button type="button" @click="setRegistro"> set 5 registros</button>
       </div>
+      <div>
+        <button type="button" @click="getNodes"> nodes Setups</button>
+      </div>
     </div>
     </div>
 </template>
@@ -140,6 +143,28 @@ export default {
         this.esperando = false
         alert(data.valor)
         alert(data.erro)
+        this.falha = false
+      }catch(error){
+        this.falha = true
+        this.esperando = false
+        alert(error)
+      }
+    },
+    async getNodes(){
+      try{
+        this.esperando = true
+        const response = await fetch(`${this.getDominio}/api/nodesetup/`,{
+          method:"GET",
+          headers:{
+            'Authorization': `Token ${this.getToken}`
+          },
+        });
+        if(!response.ok){
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json()
+        this.esperando = false
+        alert(data)
         this.falha = false
       }catch(error){
         this.falha = true
