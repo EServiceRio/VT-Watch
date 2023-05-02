@@ -111,7 +111,7 @@ END FUNCTION
 
 FUNCTION logAprendizado(x)
 	clock = "\"" & LEFT(API(102),19) & "\""
-	outRet = FILEOUT(11,0,0,"{" & "\"time\":" & clock & ",\"node\":" & int(nodeId[x]) & ",\"vibraX\":" & vibraX[x] & ",\"vibraZ\":" & vibraZ[x] & ",\"temp\":" & temp[x] & ",\"corrente\":" & corrente[x] & ",\"vibraZ2\":" & vibraZ2[x] & ",\"vibraX2\":" & vibraX2[x])
+	outRet = FILEOUT(11,0,0,"{" & "\"time\":" & clock & ",\"node\":" & int(nodeId[x]) & ",\"vibraX\":" & vibraX[x] & ",\"vibraZ\":" & vibraZ[x] & ",\"temp\":" & temp[x] & ",\"corrente\":" & corrente[x] & ",\"vibraZ2\":" & vibraZ2[x] & ",\"vibraX2\":" & vibraX2[x] & ",\"limiarPico\":" & limiarPico[x] & ",\"limiarMedia\":" & limiarMedia[x])
 	outRet = FILEOUT(11,0,0,"},")
 END FUNCTION
 

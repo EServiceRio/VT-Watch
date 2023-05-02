@@ -1,4 +1,4 @@
-quantidade=1vibraX[0]=0vibraZ[0]=0vibraX2[0]=0vibraZ2[0]=0temp[0]=0corrente[0]=0estado[0]=0alerta[0]=0online[0]=0nodeId[0]=2endereco[0]=2ciclo[0]=60cicloConter[0]=0addrVibraX[0]=2453addrVibraX2[0]=2454addrVibraZ[0]=2403addrVibraZ2[0]=2404addrTemp[0]=43addrCorrente[0]=1alertVibraX[0]=167alertVibraX2[0]=167alertVibraZ[0]=174alertVibraZ2[0]=247alertTemp[0]=4162alertCorrente[0]=0alertVibraXNv2[0]=249alertVibraX2Nv2[0]=353alertVibraZNv2[0]=244alertVibraZ2Nv2[0]=346alertTempNv2[0]=4291alertCorrenteNv2[0]=0aprender[0]=0aprenderTime[0]=10aprenderTimeConter[0]=0aprenderCiclo[0]=30aprenderConter[0]=0'versao 1.0 scripts monitoramento de motores
+quantidade=1vibraX[0]=0vibraZ[0]=0vibraX2[0]=0vibraZ2[0]=0temp[0]=0corrente[0]=0estado[0]=0alerta[0]=0online[0]=0nodeId[0]=4endereco[0]=2ciclo[0]=60cicloConter[0]=0addrVibraX[0]=2453addrVibraX2[0]=2454addrVibraZ[0]=2403addrVibraZ2[0]=2404addrTemp[0]=43addrCorrente[0]=1alertVibraX[0]=1017alertVibraX2[0]=1017alertVibraZ[0]=2290alertVibraZ2[0]=3239alertTemp[0]=5529alertCorrente[0]=0alertVibraXNv2[0]=5330alertVibraX2Nv2[0]=7538alertVibraZNv2[0]=13696alertVibraZ2Nv2[0]=19368alertTempNv2[0]=6170alertCorrenteNv2[0]=0aprender[0]=0aprenderTime[0]=10aprenderTimeConter[0]=0aprenderCiclo[0]=20aprenderConter[0]=0limiarPico[0]=10limiarMedia[0]=5'versao 1.0 scripts monitoramento de motores
 
 'organizacao dos dados cada motor tem 50 regs comcando do valor base:(1000) - 1001 a 1050 motor 1 ...
 '1-6 = medidas - 1VX 2VZ 3VX2 4VZ2 5T 6Cor
@@ -111,7 +111,7 @@ END FUNCTION
 
 FUNCTION logAprendizado(x)
 	clock = "\"" & LEFT(API(102),19) & "\""
-	outRet = FILEOUT(11,0,0,"{" & "\"time\":" & clock & ",\"node\":" & int(nodeId[x]) & ",\"vibraX\":" & vibraX[x] & ",\"vibraZ\":" & vibraZ[x] & ",\"temp\":" & temp[x] & ",\"corrente\":" & corrente[x] & ",\"vibraZ2\":" & vibraZ2[x] & ",\"vibraX2\":" & vibraX2[x])
+	outRet = FILEOUT(11,0,0,"{" & "\"time\":" & clock & ",\"node\":" & int(nodeId[x]) & ",\"vibraX\":" & vibraX[x] & ",\"vibraZ\":" & vibraZ[x] & ",\"temp\":" & temp[x] & ",\"corrente\":" & corrente[x] & ",\"vibraZ2\":" & vibraZ2[x] & ",\"vibraX2\":" & vibraX2[x] & ",\"limiarPico\":" & limiarPico[x] & ",\"limiarMedia\":" & limiarMedia[x])
 	outRet = FILEOUT(11,0,0,"},")
 END FUNCTION
 

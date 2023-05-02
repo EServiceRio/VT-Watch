@@ -40,6 +40,9 @@
                 </em>
               </template>
               <div>
+                 <b-button @click="ifParaAdmin" variant="primary">Abrir Configs</b-button>
+              </div>
+              <div>
                  <b-button @click="gravar" variant="primary">Gravar DXM</b-button>
               </div>
               <div>
@@ -77,6 +80,9 @@ export default {
       ...mapMutations(['logout','dxmSetOn','dxmSetOff']),
       load(){
         this.getDados()
+      },
+      ifParaAdmin(){
+        window.open(`${this.getDominio}/admin`, '_blank')
       },
       async gravar() {
         try {

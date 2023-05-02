@@ -52,8 +52,7 @@ class Node(models.Model):
         return f'{self.name}'
 
 class NodeSetup(models.Model):
-    node = models.ForeignKey(Node,on_delete=models.CASCADE)
-    nodeId = models.IntegerField("Node", default=1)
+    node = models.ForeignKey(Node,on_delete=models.CASCADE,unique=True)
     address = models.IntegerField("endereço", default=1)
     ciclo = models.IntegerField("ciclo de logs (s)", default=60,)
     addrVibraX = models.IntegerField("endereço X Veloc RMS", default=1)
@@ -82,6 +81,8 @@ class NodeSetup(models.Model):
     fatorCorrente = models.IntegerField("fator Corrente", default=1)
     aprenderTime= models.IntegerField("qtds de medicoes para Aprender", default=10)
     aprenderCiclo= models.IntegerField("tempo entre medicoes p/ Apdr", default=60)
+    limiarPico = models.DecimalField("limiar para pico %", default=10,decimal_places=3,max_digits=12)
+    limiarMedia = models.DecimalField("limiar para media %", default=5,decimal_places=3,max_digits=12)
 
     class Meta:
         verbose_name="NodeSetup"

@@ -11,7 +11,7 @@ class NodeAdmin(admin.ModelAdmin):
 
 @admin.register(NodeSetup)
 class NodeSetupAdmin(admin.ModelAdmin):
-    list_display = ('node','address','nodeId',)
+    list_display = ('node','address')
 
 @admin.register(Hist)
 class HistAdmin(admin.ModelAdmin):
