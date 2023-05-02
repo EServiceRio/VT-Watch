@@ -2,10 +2,10 @@ from django.db import models
 
 
 class Estados(models.TextChoices):
-    OK = 'ok'
-    FALHA = 'falha'
-    ALERTA = 'alerta'
-    DESCONHECIDO = 'Indefinido'
+    OK = '1'
+    FALHA = '2'
+    ALERTA = '3'
+    DESCONHECIDO = '0'
 
 class OS(models.Model):
     name = models.CharField("nome",max_length=100)
@@ -19,6 +19,11 @@ class Gateway(models.Model):
     port = models.CharField("porta", max_length=20, default="COM4")
     boudrate = models.IntegerField("BoudRate", default=19200)
     online = models.BooleanField("Online")
+    configurar = models.BooleanField("Configrando", default=False)
+    configurarStatus = models.IntegerField("status Configurar", default=0)
+    configurarMsg = models.CharField("config msg", max_length=20, default="ok")
+    aprender = models.BooleanField("Aprender", default=False)
+    motorIndex = models.IntegerField("Motor alvo", default=0)
 
     class Meta:
         verbose_name="Gateway"
@@ -35,7 +40,7 @@ class Node(models.Model):
     vibraZ2 = models.DecimalField("Z Acele Pico", default=0.000, decimal_places=3,max_digits=12)
     corrente = models.DecimalField("Corrente", default=0.000, decimal_places=2,max_digits=12)
     temp = models.DecimalField("Temperatura", default=0.000, decimal_places=1,max_digits=12)
-    estado = models.CharField("Estado",max_length=30,choices=Estados.choices,default=Estados.DESCONHECIDO)
+    estado = models.CharField("Estado",max_length=2,choices=Estados.choices,default=Estados.DESCONHECIDO)
     online = models.BooleanField("Online")
     alerta = models.CharField("alerta",max_length=30,default="000000")
 
@@ -69,6 +74,14 @@ class NodeSetup(models.Model):
     alertVibraX2Nv2 = models.DecimalField("Alert X Acele - nv2", default=15.000, decimal_places=3,max_digits=12)
     alertVibraZ2Nv2 = models.DecimalField("Alert Z Acele - nv2", default=15.000, decimal_places=3,max_digits=12)
     alertCorrenteNv2 = models.DecimalField("Alert Corrente nv2", default=20.0, decimal_places=2,max_digits=12)
+    fatorVibraX = models.IntegerField("fator X Veloc RMS", default=1000)
+    fatorVibraZ = models.IntegerField("fator Z Veloc RMS", default=1000)
+    fatorVibraX2 = models.IntegerField("fator X Acele Pico", default=1000)
+    fatorVibraZ2 = models.IntegerField("fator Z Acele Pico", default=1000)
+    fatorTemp = models.IntegerField("fator Temperatura", default=100)
+    fatorCorrente = models.IntegerField("fator Corrente", default=1)
+    aprenderTime= models.IntegerField("qtds de medicoes para Aprender", default=10)
+    aprenderCiclo= models.IntegerField("tempo entre medicoes p/ Apdr", default=60)
 
     class Meta:
         verbose_name="NodeSetup"
@@ -79,7 +92,7 @@ class NodeSetup(models.Model):
 
 
 class Hist(models.Model):
-    date = models.DateTimeField('Data',auto_now_add=True)
+    time = models.DateTimeField('Data')
     node = models.ForeignKey(Node,on_delete=models.CASCADE)
     alertVibraX = models.DecimalField("Alert X Veloc - nv1", default=5.000, decimal_places=3,max_digits=12)
     alertVibraZ = models.DecimalField("Alert Z Veloc - nv1", default=5.000, decimal_places=3,max_digits=12)
@@ -105,7 +118,7 @@ class Hist(models.Model):
         verbose_name_plural="Registros"
 
     def __str__(self):
-        return f'Registro de {self.date}'
+        return f'Registro de {self.time}'
 
 class Evento(models.Model):
     date = models.DateTimeField('Data',auto_now_add=True)
@@ -119,3 +132,36 @@ class Evento(models.Model):
 
     def __str__(self):
         return f'Evento de {self.descricao}'
+    
+
+class Aprendizado(models.Model):
+    criado = models.DateTimeField(auto_now_add=True)
+    node = models.ForeignKey(Node,on_delete=models.CASCADE)
+    limiarPico = models.DecimalField("limiar para pico %", default=5,decimal_places=3,max_digits=12)
+    limiarMedia = models.DecimalField("limiar para media %", default=2,decimal_places=3,max_digits=12)
+    picoVibraX = models.DecimalField("Pico X RMS", default=0,decimal_places=3,max_digits=12)
+    mediaVibraX = models.DecimalField("Media X RMS", default=0,decimal_places=3,max_digits=12)
+    picoVibraX2 = models.DecimalField("Pico X Pico", default=0,decimal_places=3,max_digits=12)
+    mediaVibraX2 = models.DecimalField("Media X Pico", default=0,decimal_places=3,max_digits=12)
+    picoVibraZ = models.DecimalField("Pico Z RMS", default=0,decimal_places=3,max_digits=12)
+    mediaVibraZ = models.DecimalField("Media Z RMS", default=0,decimal_places=3,max_digits=12)
+    picoVibraZ2 = models.DecimalField("Pico Z Pico", default=0,decimal_places=3,max_digits=12)
+    mediaVibraZ2 = models.DecimalField("Media Z Pico", default=0,decimal_places=3,max_digits=12)
+    picoTemp = models.DecimalField("Pico T", default=0,decimal_places=3,max_digits=12)
+    mediaTemp = models.DecimalField("Media T", default=0,decimal_places=3,max_digits=12)
+    picoCorrente = models.DecimalField("Pico Corrente", default=0,decimal_places=3,max_digits=12)
+    mediaCorrente = models.DecimalField("Media Corrente", default=0,decimal_places=3,max_digits=12)
+
+
+class AprendizadoLog(models.Model):
+    time = models.DateTimeField('Data')
+    aprendizado = models.ForeignKey(Aprendizado,on_delete=models.CASCADE)
+    vibraX = models.DecimalField("X Veloc RMS", default=0.000, decimal_places=3,max_digits=12)
+    vibraZ = models.DecimalField("Z Veloc RMS", default=0.000, decimal_places=3,max_digits=12)
+    vibraX2 = models.DecimalField("X Acele Pico", default=0.000, decimal_places=3,max_digits=12)
+    vibraZ2 = models.DecimalField("Z Acele Pico", default=0.000, decimal_places=3,max_digits=12)
+    temp = models.DecimalField("Temperatura", default=0.000, decimal_places=1,max_digits=12)
+    corrente = models.DecimalField("Corrente", default=0.000, decimal_places=2,max_digits=12)
+
+
+    

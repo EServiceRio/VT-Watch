@@ -5,6 +5,7 @@ from .views import NodeList, NodeDetail
 from .views import NodeSetupList, NodeSetupDetail
 from .views import HistList, HistDetail, Filtra
 from .views import EventoList, EventoDetail, Eventos
+from .views import Aprende, ConfigDXM
 
 urlpatterns = [
     path('os/', OsList.as_view()),
@@ -20,6 +21,8 @@ urlpatterns = [
     path('hist/<int:pk>/',HistDetail.as_view()),
     path('evento/', EventoList.as_view()),
     path('evento/<int:pk>/',EventoDetail.as_view()),    
-    path('filtra/',Filtra.as_view(),name="filtra"),
+    path('filtra/',Filtra,name="filtra"),
+    path('aprende/',Aprende,name="aprende"),
+    path('config/',ConfigDXM,name="config_DXM"),
     path('eventos/',Eventos.as_view(),name="eventos"),
 ]

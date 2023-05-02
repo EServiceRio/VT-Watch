@@ -1,12 +1,15 @@
 <template>
     <form @submit.prevent="login">
-      <label for="username">Nome de usuário:</label>
-      <input type="text" name="username" v-model="username">
-  
-      <label for="password">Senha:</label>
-      <input type="password" name="password" v-model="password">
-  
-      <button type="submit">Entrar</button>
+   
+      <div class="m-auto">
+        <input class="p-1 m-1"  type="text" name="username" v-model="username">  
+        <input class="p-1 m-1"  type="password" name="password" v-model="password">
+        <br>
+        <div class="">
+          <button class="btn btn-primary"  type="submit">Entrar</button>
+        </div>
+        
+    </div>
     </form>
   </template>
   

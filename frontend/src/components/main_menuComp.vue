@@ -11,7 +11,6 @@
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
             <b-nav-item><router-link to="/">Home</router-link></b-nav-item>
-            <b-nav-item><router-link to="/page1/">teste</router-link></b-nav-item>
             <b-nav-item><router-link to="/fabrica/">Fábrica</router-link></b-nav-item>
             <b-nav-item-dropdown>
               <template #button-content>
@@ -26,6 +25,10 @@
           </b-navbar-nav>
          
           <b-navbar-nav class="ml-auto mr-2">
+            <div class="m-auto" v-if="data.configurar">
+                <p class="text-info"> {{ data.msg }}</p>
+                <b-progress max="100" :value="data.percent"></b-progress>
+            </div>
             <div class="m-auto">
               <img :src="dxm_online" width="30" height="30" />
             </div>
@@ -36,6 +39,9 @@
                   <b-avatar badge-variant="danger" variant="primary"></b-avatar>
                 </em>
               </template>
+              <div>
+                 <b-button @click="gravar" variant="primary">Gravar DXM</b-button>
+              </div>
               <div>
                  <b-button @click="deslogar" variant="primary">sair</b-button>
               </div>
@@ -63,6 +69,7 @@ export default {
     },
     data(){
       return{
+        data:[],
         node:[]
       }
     },
@@ -71,6 +78,24 @@ export default {
       load(){
         this.getDados()
       },
+      async gravar() {
+        try {
+          const response = await fetch(`${this.getDominio}/api/config/`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Token ${this.getToken}`
+            },
+          });
+  
+          if (response.ok) {
+            console.log("foi")
+          } else {
+            console.error('Erro ao fazer login');
+          }
+            } catch (error) {
+                console.error(error);
+            }
+        },
       goHistorico(id){
         this.$router.push( {path: `/historico/${id}`,forceRefresh: true} )
         document.location.reload()
@@ -95,6 +120,7 @@ export default {
   
           if (response.ok) {
             const data = await response.json();
+            this.data = data
             if(data.online){
               this.dxmSetOn()
              }else{

@@ -5,16 +5,16 @@
                 <h3 class="text-center">{{data.name}}</h3>
                 <div class="m-auto text-center" v-if="data.online==true"><img :src="motorImg" height="160px"></div>
                 <div class="m-auto text-center" v-else><img :src="this.$getImgUrl('motorOffLine','png')" height="160px"></div>
-                <b-form-group v-if="data.vibraX>0" class="m-2" label="Veloc. RMS X(mm/s):" label-for="x">
+                <b-form-group v-if="data.vibraX>0" class="m-2" label="RMS X(mm/s):" label-for="x">
                     <b-form-input v-model="data.vibraX" v-bind:class="alerta1"  name="x" disabled size="lg" type="text"></b-form-input>
                 </b-form-group>
-                <b-form-group v-if="data.vibraZ>0" class="m-2" label="Veloc. RMS Z(mm/s):" label-for="z">
+                <b-form-group v-if="data.vibraZ>0" class="m-2" label="RMS Z(mm/s):" label-for="z">
                     <b-form-input v-model="data.vibraZ" v-bind:class="alerta2"  name="z" disabled size="lg" type="text"></b-form-input>
                 </b-form-group>
-                 <b-form-group v-if="data.vibraX2>0" class="m-2" label="Acele. Pico X(G):" label-for="x2">
+                 <b-form-group v-if="data.vibraX2>0" class="m-2" label="Pico X(mm/s):" label-for="x2">
                     <b-form-input v-model="data.vibraX2" v-bind:class="alerta3"  name="x2" disabled size="lg" type="text"></b-form-input>
                 </b-form-group>
-                <b-form-group v-if="data.vibraZ2>0" class="m-2" label="Acele. Pico Z(G):" label-for="z2">
+                <b-form-group v-if="data.vibraZ2>0" class="m-2" label="Pico Z(mm/s):" label-for="z2">
                     <b-form-input v-model="data.vibraZ2" v-bind:class="alerta4"  name="z2" disabled size="lg" type="text"></b-form-input>
                 </b-form-group>
                 <b-form-group v-if="data.corrente>0" class="m-2" label="Corrente(A):" label-for="z2">
@@ -23,6 +23,9 @@
                 <b-form-group v-if="data.temp>0" class="m-2" label="Temperatura(Cº):" label-for="temp">
                     <b-form-input v-model="data.temp" v-bind:class="alerta5" name="temp" disabled size="lg" type="text"></b-form-input>
                 </b-form-group>
+                <div>
+                    <button type="button" @click="aprende(data.id)" class="btn btn-block btn-primary">Aprender</button>
+                </div>
             </div>
         </div>
     </div>
@@ -39,12 +42,38 @@ export default {
     data(){
       return{
           data:{
+            id:0
           }
       }
     },
     methods:{
         load(){
             this.readData()
+        },
+        dataFormat(){
+            const formData = new FormData()
+            formData.append('alvo',`${this.id}`)
+            return formData
+        },
+        async aprende(valor) {
+            this.id = valor
+        try {
+          const response = await fetch(`${this.getDominio}/api/aprende/`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Token ${this.getToken}`
+            },
+            body: this.dataFormat()
+          });
+  
+          if (response.ok) {
+            console.log("foi")
+          } else {
+            console.error('Erro ao fazer login');
+          }
+            } catch (error) {
+                console.error(error);
+            }
         },
         async readData() {
         fetch(`${this.getDominio}/api/node/${this.endereco}/`,{
@@ -82,12 +111,14 @@ export default {
         ...mapGetters(['getDominio','getToken']),
         motorImg(){
           switch (this.data.estado) {
-              case "ok":
+              case "1":
                     return this.$getImgUrl("motorOk","png")
-                case "falha":
-                     return this.$getImgUrl("motorFalha","png")
-                 case "alerta":
-                     return this.$getImgUrl("motorAlerta","png")
+                case "2":
+                    return this.$getImgUrl("motorFalha","png")
+                case "3":
+                    return this.$getImgUrl("motorAlerta","png")
+                case "4":
+                    return this.$getImgUrl("motorLearn","png")
               default:
                   return this.$getImgUrl("motorPreto","png")
           }

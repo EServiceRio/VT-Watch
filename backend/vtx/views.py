@@ -84,21 +84,66 @@ def DxmStatus(request):
     modelo = Gateway.objects.all()[0]
     data = {
         'online':modelo.online,
-        'nome': modelo.name
+        'nome': modelo.name,
+        'configurar': modelo.configurar,
+        'percent': modelo.configurarStatus,
+        'msg': modelo.configurarMsg,
     }
     return Response(data)
 
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def Aprende(request):
+    endereco =Gateway.objects.all()[0]
+    try:
+        reg = int(request.POST['alvo'])  
+        data = {
+            'valor': "ok",
+            'erro': False
+        }
+        endereco.aprender = True
+        endereco.motorIndex = reg
+        endereco.online = True
+        endereco.save()
+    except Exception as EX:
+        data = {
+            'valor': 'erro',
+            'erro': str(EX)
+        }        
+        endereco.online = False
+        endereco.save()        
+    return Response(data)
 
-@method_decorator(csrf_exempt, name='dispatch')
-class Filtra(View):
-    def post(self,request):        
-        try:
-            user = str(request.POST['token'])
-            token = Token.objects.filter(key=user).first()
-            if not token:
-                return HttpResponse('{"falha":"token inexistente"}')
-        except Token.DoesNotExist:
-            return HttpResponse('{"falha":"token inexistente"}')
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def ConfigDXM(request):
+    endereco =Gateway.objects.all()[0]
+    try:
+        data = {
+            'valor': "ok",
+            'erro': False
+        }
+        endereco.configurar = True
+        endereco.online = True
+        endereco.save()
+    except Exception as EX:
+        data = {
+            'valor': 'erro',
+            'erro': str(EX)
+        }        
+        endereco.online = False
+        endereco.save()        
+    return Response(data)
+
+
+
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def Filtra(request):
+    try:
         inis = str(request.POST['ini'])
         fims = str(request.POST['fim'])
         node = int(request.POST['node'])
@@ -116,21 +161,13 @@ class Filtra(View):
         fim = datetime(int(fimDA[0]),int(fimDA[1]),int(fimDA[2]),int(fimTA[0]),int(fimTA[1]),0)
         ini += timedelta(hours=3)
         fim += timedelta(hours=3)
-        print(f'{ini}')
-        print(f'{fim}')
-        dadof = Hist.objects.filter(Q(date__gt=ini) & Q(date__lt=fim) & Q(node=node)).order_by('date')
-        strinfy = ""
-        
-        for hf in dadof:
-            hora = int(hf.date.hour)-3
-            if hora<0:
-                hora+=23  
-            hf.date = f'{hora}:{hf.date.minute} {hf.date.day}/{hf.date.month}/{hf.date.year}'
-            #strinfy = f'{strinfy}{{"hora":"{hf.date}","X Veloc":{hf.vibraX/1000},"Z Veloc":{hf.vibraZ/1000},"X Acele":{hf.vibraX2/1000},"Z Acele":{hf.vibraZ2/1000},"Temperatura":{hf.temp/20},"Aler X Veloc":{hf.alertVibraX},"Aler Z Veloc":{hf.alertVibraZ},"Aler X Acele":{hf.alertVibraX2},"Aler Z Acele":{hf.alertVibraZ2},"Aler Temper":{hf.alertTemp}}},'
-            strinfy = f'{strinfy}{{"hora":"{hf.date}","X Veloc":{hf.vibraX/1000},"Z Veloc":{hf.vibraZ/1000},"Temperatura":{hf.temp/20},"Corrente":{hf.corrente/100},"Aler X Veloc":{hf.alertVibraX},"Aler Z Veloc":{hf.alertVibraZ},"Aler Corrente":{hf.alertCorrente},"Aler Temper":{hf.alertTemp}}},'
-        strinfy = "[" + strinfy[:len(strinfy)-1] + "]"
-        return HttpResponse(strinfy)
-        
+        hist = Hist.objects.filter(Q(time__gt=ini) & Q(time__lt=fim) & Q(node=node)).order_by('time')
+        histSerial = HistSerializer(hist, many=True)
+        obj = histSerial.data
+        return Response(obj)
+    except Exception as EX:
+        return Response(data = {'erro':str(EX)})
+
 @method_decorator(csrf_exempt, name='dispatch')
 class Eventos(View):
     def post(self,request):
@@ -164,33 +201,3 @@ class Eventos(View):
         strinfy = "[" + strinfy[:len(strinfy)-1] + "]"
         return HttpResponse(strinfy)
 
-
-
-
-
-def para_dict(obj):
-    # Se for um objeto, transforma num dict
-    if hasattr(obj, '__dict__'):
-        obj = obj.__dict__
-
-    # Se for um dict, lê chaves e valores; converte valores
-    if isinstance(obj, dict):
-        return { k:para_dict(v) for k,v in obj.items() }
-    # Se for uma lista ou tupla, lê elementos; também converte
-    elif isinstance(obj, list) or isinstance(obj, tuple):
-        return [para_dict(e) for e in obj]
-    # Se for qualquer outra coisa, usa sem conversão
-    else: 
-        return obj
-
-class dict_to_obj(object):
-    def __init__(self, d):
-        for a, b in d.items():
-            if isinstance(b, (list, tuple)):
-               setattr(self, a, [obj(x) if isinstance(x, dict) else x for x in b])
-            else:
-               setattr(self, a, obj(b) if isinstance(b, dict) else b)
-
-class objectDict(dict):
-    def __getattr__(self,name):
-        return self.__getitem__(name)

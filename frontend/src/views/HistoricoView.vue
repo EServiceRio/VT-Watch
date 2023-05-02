@@ -20,12 +20,12 @@
         </b-row>  
 
         <div class="text-center">
-            <b-table responsive :fields="campos" :items="items" 
+            <b-table responsive :items="items" 
                 head-variant="dark" sticky-header="401px">
             </b-table>
         </div>
         <div >
-            <chartComp ref="chart" :data="items" labels="hora"></chartComp>
+            <chartComp ref="chart" :data="items" labels="Hora"></chartComp>
         </div>
 
         </b-container>
@@ -55,7 +55,7 @@ export default {
                 nodeData:[],
                 dataCheck:false,
                 //campos:["hora","X Veloc","Z Veloc","X Acele","Z Acele","Temperatura","Aler X Veloc","Aler Z Veloc","Aler X Acele","Aler Z Acele","Aler Temper"],
-                campos:["hora","X Veloc","Z Veloc","Temperatura","Corrente","Aler X Veloc","Aler Z Veloc","Aler Temper","Aler Corrente"],
+                //campos:["hora","X Veloc","Z Veloc","Temperatura","Corrente","Aler X Veloc","Aler Z Veloc","Aler Temper","Aler Corrente"],
                 items:[],
             }
         },
@@ -92,7 +92,7 @@ export default {
                 }
             }).then(result=>{
                  this.items = result
-                 this.$refs.chart.refresh(this.items,"hora")                
+                 this.$refs.chart.refresh(this.items,"Hora")                
             }).catch(erro=>{
                 console.log(erro)
             })
