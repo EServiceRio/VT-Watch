@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from rest_framework.authtoken.views import obtain_auth_token
 from .views import indexView, user_data
 
@@ -26,5 +26,6 @@ urlpatterns = [
     path('token-user/', user_data, name='token_user_data'),        
     path('',indexView.as_view(),name="index"),
     path('api/',include('vtx.urls')),
-    path('api/dxm/',include('dxm.urls'))
+    path('api/dxm/',include('dxm.urls')),
+    re_path(r'^.*$', indexView.as_view())
 ]

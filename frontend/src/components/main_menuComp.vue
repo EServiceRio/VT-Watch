@@ -82,7 +82,7 @@ export default {
         this.getDados()
       },
       ifParaAdmin(){
-        window.open(`${this.getDominio}/admin`, '_blank')
+        window.open(`${this.getDominio}/admin/`, '_blank')
       },
       async gravar() {
         try {
