@@ -39,6 +39,9 @@ export default new Vuex.Store({
     },
     dxmSetOff(state){
       state.dxm = false
+    },
+    setDominio(state,valor){
+      state.dominio = `http://${valor}`
     }
   },
   actions: {

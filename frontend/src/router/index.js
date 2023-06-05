@@ -64,6 +64,13 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  if (process.env.NODE_ENV === 'development') {   
+    console.log('Estou no modo de desenvolvimento');
+  }
+  if (process.env.NODE_ENV === 'production') {
+    store.commit('setDominio',document.location.host)
+    console.log('Estou no modo de produção');
+  }
   try{
     const token = getCookie('token')
     if(token == null){ throw new Error('token inexistente');}
